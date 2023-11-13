@@ -1,3 +1,4 @@
+@extends('dopetrope.layouts.master')
 <!doctype html>
 <html lang="en">
   <head>
