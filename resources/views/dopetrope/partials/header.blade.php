@@ -1,13 +1,13 @@
 <section id="header">
 
     <!-- Logo -->
-    <h1>
-        <a href="{{ url(env('APP_URL', 'http://marcapersonalfp.test')) }}">
-            <img src="{{ asset('/images/mp-logo.png') }}" alt="Logo Marca Personal FP" width="200px"/>
+    <!--<h1>
+        <a href="{{-- url(env('APP_URL', 'http://marcapersonalfp.test')) }}">
+            <img src="{{ asset('/images/mp-logo.png') --}}" alt="Logo Marca Personal FP" width="200px"/>
         </a>
-    </h1>
+    </h1> -->
     <!-- Nav -->
-        <nav id="nav">
+        <!--<nav id="nav">
             <ul>
                 <li class="current"><a href="index.html">Home</a></li>
                 <li>
@@ -33,7 +33,10 @@
                 <li><a href="right-sidebar.html">Right Sidebar</a></li>
                 <li><a href="no-sidebar.html">No Sidebar</a></li>
             </ul>
-        </nav>
+        </nav> -->
+
+        @include('partials.navbar')
+
 
     <!-- Banner -->
         <section id="banner">
