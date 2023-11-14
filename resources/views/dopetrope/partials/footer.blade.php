@@ -84,7 +84,7 @@
                 </section>
             </div>
             <div class="col-4 col-12-medium">
-                <section>
+                {{--<section>
                     <header>
                         <h2>Vitae tempor lorem</h2>
                     </header>
@@ -127,4 +127,5 @@
             </div>
         </div>
     </div>
-</section>
+</section>--}}
+@include('dopetrope.partials.c3info')
