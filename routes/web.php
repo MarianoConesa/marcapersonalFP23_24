@@ -33,9 +33,7 @@ Route::prefix('catalog')->group(function () {
     Route::get('/', function () {
         return view('catalog.index');
     });
-    Route::get('/show/{id}', function ($id) {
-        return view('catalog.show', array('id' => $id));
-    })->where('id', '[0-9]+');
+    Route::get('/show/{id}', [CatalogController::class, 'getShow'])->where('id', '[0-9]+');
 
     Route::get('/create', function () {
         return view('catalog.create');

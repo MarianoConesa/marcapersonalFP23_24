@@ -15,4 +15,8 @@ class CatalogController extends Controller
         return view('catalog.edit', ['id' => $id]);
 
     }
+
+    public function getShow($id){
+        return view('catalog.show', ['id' => $id]);
+    }
 }
