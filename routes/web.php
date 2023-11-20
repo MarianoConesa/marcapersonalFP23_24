@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\CatalogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +27,8 @@ Route::get('logout', function () {
     return "Logout usuario";
 });
 
+Route::get('user/{name}/{ape}', [UserController::class, 'showProfile']);
+
 Route::prefix('catalog')->group(function () {
     Route::get('/', function () {
         return view('catalog.index');
@@ -37,9 +41,13 @@ Route::prefix('catalog')->group(function () {
         return view('catalog.create');
     });
 
-    Route::get('/edit/{id}', function ($id) {
+    Route::get('/edit/{id}', [CatalogController::class, 'getEdit']) ->where('id', '[0-9]+');
+
+    /*Route::get('/edit/{id}', function ($id) {
         return view('catalog.edit', array('id' => $id));
-    })->where('id', '[0-9]+');
+    })->where('id', '[0-9]+');*/
+
+
 });
 
 Route::get('perfil/{id?}', function ($id = null) {
