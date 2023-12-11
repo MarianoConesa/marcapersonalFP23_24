@@ -10,7 +10,7 @@
             </div>
             <div class="card-body p-4">
 
-                <form action="{{ action([App\Http\Controllers\EstudianteController::class, 'store']) }}" method="POST">
+                <form action="{{ action([App\Http\Controllers\EstudianteController::class, 'store']) }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
                     <div class="form-group">
@@ -41,6 +41,12 @@
                         <label for="ciclo">Ciclo</label>
                         <input type="text" name="ciclo" id="ciclo" class="form-control">
                     </div>
+
+                    <div class="form-group">
+                        <label for="avatar">Avatar</label>
+                        <input type="file" class="form-control" id="avatar" name="avatar" placeholder="Avatar">
+                    </div>
+
 
                     <div class="form-group text-center">
                         <button type="submit" class="btn btn-primary" style="padding:8px 100px;margin-top:25px;">

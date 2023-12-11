@@ -6,6 +6,7 @@ use App\Models\Estudiante;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Validation\Rules\Exists;
 
 class EstudianteController extends Controller
 {
@@ -28,6 +29,19 @@ class EstudianteController extends Controller
     public function putEdit(Request $request, $id) {
 
         $estudiante = Estudiante::findOrFail($id);
+
+        if ($request->hasFile('avatar')){
+
+            $path = $request->file('avatar')->store('avatars', ['disk' => 'public']);
+
+            if ($estudiante->avatar->exists()){
+
+                $estudiante->avatar->delete();
+                $estudiante->avatar = $path;
+                $estudiante->save();
+            }
+        }
+
         $estudiante->update($request->all());
 
         return redirect(action([self::class, 'getShow'], ['id' => $id]));
