@@ -34,7 +34,7 @@ class EstudianteController extends Controller
 
             $path = $request->file('avatar')->store('avatars', ['disk' => 'public']);
 
-            if ($estudiante->avatar->exists()){
+            if ($estudiante->avatar){
 
                 $estudiante->avatar->delete();
                 $estudiante->avatar = $path;

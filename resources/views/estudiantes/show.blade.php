@@ -4,11 +4,11 @@
 
 <div class="row m-4">
     <div class="col-sm-4">
-@if ($estudiante->avatar)
-    <img src="{{ Storage::url($estudiante->avatar) }}" alt="Avatar" class="img-thumbnail">
-@else
-        <img width="300" style="height:300px" alt="Curriculum-vitae-warning-icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Curriculum-vitae-warning-icon.svg/256px-Curriculum-vitae-warning-icon.svg.png">
-@endif
+        @if ($estudiante->avatar)
+            <img src="{{ Storage::url($estudiante->avatar) }}" alt="Avatar" class="img-thumbnail">
+        @else
+                <img width="300" style="height:300px" alt="Curriculum-vitae-warning-icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Curriculum-vitae-warning-icon.svg/256px-Curriculum-vitae-warning-icon.svg.png">
+        @endif
     </div>
 
     <div class="col-sm-8  align-self-center">
