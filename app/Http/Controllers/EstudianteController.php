@@ -30,17 +30,17 @@ class EstudianteController extends Controller
 
         $estudiante = Estudiante::findOrFail($id);
 
-        if ($request->hasFile('avatar')){
+        //if ($request->hasFile('avatar')){
 
             $path = $request->file('avatar')->store('avatars', ['disk' => 'public']);
 
-            if ($estudiante->avatar){
+            //if ($estudiante->avatar){
 
-                $estudiante->avatar->delete();
+                //$estudiante->delete('avatar');
                 $estudiante->avatar = $path;
                 $estudiante->save();
-            }
-        }
+            //}
+        //}
 
         $estudiante->update($request->all());
 
