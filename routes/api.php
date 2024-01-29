@@ -8,6 +8,7 @@ use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\API\ProyectoController;
 use App\Http\Controllers\API\FamiliaProfesionalController;
 use App\Http\Controllers\API\IdiomaController;
+use App\Http\Controllers\API\TokenController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Psr\Http\Message\ServerRequestInterface;
@@ -29,26 +30,37 @@ use App\Http\Controllers\API\CountController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::prefix('v1')->group(function () {
-    Route::get('{tabla}/count', [CountController::class, 'count']);
-    Route::apiResource('ciclos', CicloController::class);
-    Route::apiResource('reconocimientos', ReconocimientoController::class);
-    Route::apiResource('users', UserController::class);
-    Route::apiResource('proyectos', ProyectoController::class);
-    Route::apiResource('empresas', EmpresaController::class);
-    Route::apiResource('familias_profesionales', FamiliaProfesionalController::class)->parameters([
-        'familias_profesionales' => 'familiaProfesional'
-    ]);
-    Route::apiResource('curriculos', CurriculoController::class);
-    Route::apiResource('actividades', ActividadController::class)->parameters([
-        'actividades' => 'actividad'
-    ]);
-    Route::apiResource('competencias', CompetenciaController::class);
-    Route::apiResource('idiomas', IdiomaController::class);
+
+    Route::middleware('auth:sanctum')->group(function () {
+        Route::get('/user', function (Request $request) {
+            $user = $request->user();
+            $user->fullName = $user->nombre . ' ' . $user->apellidos;
+            return $user;
+        });
+
+        Route::get('{tabla}/count', [CountController::class, 'count']);
+        Route::apiResource('ciclos', CicloController::class);
+        Route::apiResource('reconocimientos', ReconocimientoController::class);
+        Route::apiResource('users', UserController::class);
+        Route::apiResource('proyectos', ProyectoController::class);
+        Route::apiResource('empresas', EmpresaController::class);
+        Route::apiResource('familias_profesionales', FamiliaProfesionalController::class)->parameters([
+            'familias_profesionales' => 'familiaProfesional'
+        ]);
+        Route::apiResource('curriculos', CurriculoController::class);
+        Route::apiResource('actividades', ActividadController::class)->parameters([
+            'actividades' => 'actividad'
+        ]);
+        Route::apiResource('competencias', CompetenciaController::class);
+        Route::apiResource('idiomas', IdiomaController::class);
+
+    });
+
+    // emite un nuevo token
+    Route::post('tokens', [TokenController::class, 'store']);
+    // elimina el token del usuario autenticado
+    Route::delete('tokens', [TokenController::class, 'destroy'])->middleware('auth:sanctum');
 });
 
 
