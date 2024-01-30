@@ -50,4 +50,19 @@ dataProvider.getIdentity = () => {
     });
 };
 
+dataProvider.postLogin = (email, password) => {
+    return httpClient(`${apiUrl}/login`, {
+        method: 'POST',
+        body: JSON.stringify({ email, password }),
+        headers: new Headers({ 'Content-Type': 'application/json' }),
+    });
+};
+
+dataProvider.postLogout = () => {
+    return httpClient(`${apiUrl}../../../logout`, {
+        method: 'POST',
+        headers: new Headers({ 'Content-Type': 'application/json' }),
+    });
+};
+
 export { dataProvider };

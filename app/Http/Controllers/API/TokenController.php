@@ -50,5 +50,5 @@ class TokenController extends Controller
     {
         $request->user()->currentAccessToken()->delete();
     }
-
 }
+
