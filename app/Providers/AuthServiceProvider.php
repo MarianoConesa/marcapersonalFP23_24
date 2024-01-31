@@ -2,30 +2,31 @@
 
 namespace App\Providers;
 
-use App\Models\User;
 use App\Models\Curriculo;
-use Illuminate\Support\Facades\Gate;
+use App\Policies\CurriculoPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+//use Illuminate\Support\Facades\Gate;
 
 class AuthServiceProvider extends ServiceProvider
 {
     /**
-     * The model to policy mappings for the application.
+     * The policy mappings for the application.
      *
-     * @var array<class-string, class-string>
+     * @var array
      */
     protected $policies = [
-        //
+        Curriculo::class => CurriculoPolicy::class,
     ];
 
     /**
-     * Register any authentication / authorization services.
+     * Register any application authentication / authorization services.
+     *
+     * @return void
      */
-    public function boot(): void
+    public function boot()
     {
-        Gate::define('update-curriculo', function (User $user, Curriculo $curriculo) {
-                    return $user->id === $curriculo->user_id;
-                });
+        $this->registerPolicies();
 
+        //
     }
 }
