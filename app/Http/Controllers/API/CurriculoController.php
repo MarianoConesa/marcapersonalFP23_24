@@ -12,6 +12,12 @@ use Illuminate\Support\Facades\Gate;
 class CurriculoController extends Controller
 {
     public $modelclass = Curriculo::class;
+
+    public function __construct()
+    {
+        $this->authorizeResource(Curriculo::class, 'curriculo');
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -55,7 +61,8 @@ class CurriculoController extends Controller
         abort_if ($request->user()->cannot('update', $curriculo), 403);
         */
 
-        $this->authorize('update', $curriculo); //Comprueba si est´a autorizado, si lo está continua, si no lanza una excepción
+        //Con la funcion __construct ya no hace falta esta linea
+        //$this->authorize('update', $curriculo); //Comprueba si est´a autorizado, si lo está continua, si no lanza una excepción
         $curriculoData = json_decode($request->getContent(), true);
         $curriculo->update($curriculoData);
 

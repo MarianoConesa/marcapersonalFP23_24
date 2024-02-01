@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\Estudiante;
 use App\Models\Proyecto;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
@@ -24,9 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call(UsersTableSeeder::class);
         // llamadas a otros ficheros de seed
 
-        $this->call(EstudiantesTableSeeder::class);
         $this->call(ReconocimientosTableSeeder::class);
-        $this->call(DocentesTableSeeder::class);
         $this->call(CurriculosTableSeeder::class);
         $this->call(ActividadesTableSeeder::class);
         $this->call(FamiliasProfesionalesSeeder::class);
