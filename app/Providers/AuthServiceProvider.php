@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+<<<<<<< HEAD
+=======
+// use Illuminate\Support\Facades\Gate;
+>>>>>>> master
 use App\Models\Curriculo;
 use App\Policies\CurriculoPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -26,7 +30,10 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
+<<<<<<< HEAD
 
         //
+=======
+>>>>>>> master
     }
 }

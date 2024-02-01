@@ -8,7 +8,6 @@ use Illuminate\Auth\Access\Response;
 
 class CurriculoPolicy
 {
-
     /**
      * Perform pre-authorization checks.
      *

@@ -134,4 +134,6 @@ class User extends Authenticatable
         return $this->hasMany(Actividad::class, 'docente_id', 'id');
     }
 
+
+
 }
